@@ -225,7 +225,14 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contactTitle">Contact Title/Position</label>
-                            <input type="text" id="contactTitle" name="contactTitle" placeholder="Manager, Owner, etc.">
+                            <select id="contactTitle" name="contactTitle">
+                                <option value="">Select Title</option>
+                                <option value="owner">Owner</option>
+                                <option value="manager">Manager</option>
+                                <option value="chef">Chef</option>
+                                <option value="cook">Cook</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="contactPhone">Contact Phone *</label>
@@ -258,7 +265,7 @@
                         </div>
                         <div class="form-group">
                             <label for="zipCode">ZIP Code *</label>
-                            <input type="text" id="zipCode" name="zipCode" required>
+                            <input type="number" id="zipCode" name="zipCode" required>
                         </div>
                     </div>
                 </div>
@@ -304,9 +311,9 @@
                     </div>
                 </div>
 
-                <!-- 3. Service Schedule & History -->
+                <!-- 3. Service History & Concerns -->
                 <div class="section">
-                    <h2>Service Schedule & History</h2>
+                    <h2>Service History & Concerns</h2>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="preferredTime">Preferred Service Time *</label>
@@ -349,79 +356,56 @@
                         <label for="currentProvider">Current Service Provider</label>
                         <input type="text" id="currentProvider" name="currentProvider" placeholder="Company name">
                     </div>
-                </div>
 
-                <!-- 5. Equipment & Cook-line Cleaning -->
-                <div class="section">
-                    <h2>Equipment & Cook-line Cleaning</h2>
                     <div class="form-group">
-                        <label>Cooking Equipment Requiring Service:</label>
+                        <label>Issues with Previous Hood Cleaning Services:</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="stoves" name="equipment" value="stoves">
-                                <label for="stoves">Stoves/Ranges</label>
-                                <input type="number" id="stoves-qty" name="stoves-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-noisy" name="serviceConcerns" value="noisy-disruptive">
+                                <label for="concern-noisy">Noisy/Disruptive During Service</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="ovens" name="equipment" value="ovens">
-                                <label for="ovens">Ovens</label>
-                                <input type="number" id="ovens-qty" name="ovens-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-late" name="serviceConcerns" value="late-no-show">
+                                <label for="concern-late">Late Arrivals/No Shows</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="fryers" name="equipment" value="fryers">
-                                <label for="fryers">Deep Fryers</label>
-                                <input type="number" id="fryers-qty" name="fryers-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-mess" name="serviceConcerns" value="leaves-mess">
+                                <label for="concern-mess">Leaves Mess Behind</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="grills" name="equipment" value="grills">
-                                <label for="grills">Grills</label>
-                                <input type="number" id="grills-qty" name="grills-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-unprofessional" name="serviceConcerns" value="unprofessional">
+                                <label for="concern-unprofessional">Unprofessional/Rude Behavior</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="flattop" name="equipment" value="flattop">
-                                <label for="flattop">Flat Top Grills</label>
-                                <input type="number" id="flattop-qty" name="flattop-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-disorganized" name="serviceConcerns" value="disorganized">
+                                <label for="concern-disorganized">Disorganized/Poor Planning</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="salamander" name="equipment" value="salamander">
-                                <label for="salamander">Salamanders</label>
-                                <input type="number" id="salamander-qty" name="salamander-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-quality" name="serviceConcerns" value="poor-quality">
+                                <label for="concern-quality">Poor Quality/Incomplete Work</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="woks" name="equipment" value="woks">
-                                <label for="woks">Wok Stations</label>
-                                <input type="number" id="woks-qty" name="woks-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-communication" name="serviceConcerns" value="poor-communication">
+                                <label for="concern-communication">Poor Communication</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="other-equipment" name="equipment" value="other">
-                                <label for="other-equipment">Other Equipment</label>
-                                <input type="number" id="other-equipment-qty" name="other-equipment-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                <input type="checkbox" id="concern-pricing" name="serviceConcerns" value="pricing-issues">
+                                <label for="concern-pricing">Pricing/Billing Issues</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="concern-none" name="serviceConcerns" value="no-issues">
+                                <label for="concern-none">No Previous Issues</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="equipmentCondition">Overall Cook-line Equipment Condition</label>
-                        <select id="equipmentCondition" name="equipmentCondition">
-                            <option value="">Select Condition</option>
-                            <option value="good-like-new">Good/Like New</option>
-                            <option value="average-normal">Average/Normal</option>
-                            <option value="heavy-concerning">Heavy Use/Concerning</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cooklineService">Cook-line Cleaning Service Needed?</label>
-                        <select id="cooklineService" name="cooklineService">
-                            <option value="">Select Option</option>
-                            <option value="yes-interested">Yes - Interested</option>
-                            <option value="no-not-interested">No - Not Interested</option>
-                            <option value="unsure">Unsure/Need More Info</option>
-                        </select>
+                        <label for="serviceConcernNotes">Additional Service Concerns</label>
+                        <textarea id="serviceConcernNotes" name="serviceConcernNotes" placeholder="Any other specific issues or concerns with previous service providers..."></textarea>
                     </div>
                 </div>
 
-                <!-- 6. Hood System Assessment -->
+                <!-- 4. Hood System Assessment -->
                 <div class="section">
                     <h2>Hood System Assessment</h2>
                     
@@ -439,6 +423,19 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="hoodFanMounting">Hood Fan Mounted To</label>
+                            <select id="hoodFanMounting" name="hoodFanMounting">
+                                <option value="">Select Mounting</option>
+                                <option value="rooftop">Rooftop Mounted</option>
+                                <option value="wall-mounted">Wall Mounted</option>
+                                <option value="mixed">Mixed Types</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
                             <label for="hoodFanCondition">Hood Fan Condition</label>
                             <select id="hoodFanCondition" name="hoodFanCondition">
                                 <option value="">Select Condition</option>
@@ -447,6 +444,7 @@
                                 <option value="old-has-concerns">Old/Has Concerns</option>
                             </select>
                         </div>
+                        <div class="form-group"></div>
                     </div>
 
                     <div class="form-group" id="fanConcernsGroup" style="display: none;">
@@ -519,7 +517,7 @@
                     </div>
                 </div>
 
-                <!-- 7. Building & Access Information -->
+                <!-- 5. Building & Access Information -->
                 <div class="section">
                     <h2>Building & Access Information</h2>
                     <div class="form-row">
@@ -553,8 +551,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="parkingDetails">Parking & Access Details *</label>
-                        <textarea id="parkingDetails" name="parkingDetails" placeholder="Describe parking availability, special access requirements, loading zones, etc." required></textarea>
+                        <label for="parkingDetails">Parking & Access Details</label>
+                        <textarea id="parkingDetails" name="parkingDetails" placeholder="Describe parking availability, special access requirements, loading zones, etc."></textarea>
                     </div>
 
                     <div class="form-row">
@@ -608,7 +606,77 @@
                     </div>
                 </div>
 
-                <!-- 8. Additional Notes & Observations -->
+                <!-- 6. Equipment & Cook-line Cleaning -->
+                <div class="section">
+                    <h2>Equipment & Cook-line Cleaning</h2>
+                    <div class="form-group">
+                        <label>Cooking Equipment Requiring Service:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="stoves" name="equipment" value="stoves">
+                                <label for="stoves">Stoves/Ranges</label>
+                                <input type="number" id="stoves-qty" name="stoves-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ovens" name="equipment" value="ovens">
+                                <label for="ovens">Ovens</label>
+                                <input type="number" id="ovens-qty" name="ovens-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fryers" name="equipment" value="fryers">
+                                <label for="fryers">Deep Fryers</label>
+                                <input type="number" id="fryers-qty" name="fryers-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="grills" name="equipment" value="grills">
+                                <label for="grills">Grills</label>
+                                <input type="number" id="grills-qty" name="grills-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="flattop" name="equipment" value="flattop">
+                                <label for="flattop">Flat Top Grills</label>
+                                <input type="number" id="flattop-qty" name="flattop-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="salamander" name="equipment" value="salamander">
+                                <label for="salamander">Salamanders</label>
+                                <input type="number" id="salamander-qty" name="salamander-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="woks" name="equipment" value="woks">
+                                <label for="woks">Wok Stations</label>
+                                <input type="number" id="woks-qty" name="woks-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-equipment" name="equipment" value="other">
+                                <label for="other-equipment">Other Equipment</label>
+                                <input type="number" id="other-equipment-qty" name="other-equipment-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="equipmentCondition">Overall Cook-line Equipment Condition</label>
+                        <select id="equipmentCondition" name="equipmentCondition">
+                            <option value="">Select Condition</option>
+                            <option value="good-like-new">Good/Like New</option>
+                            <option value="average-normal">Average/Normal</option>
+                            <option value="heavy-concerning">Heavy Use/Concerning</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cooklineService">Cook-line Cleaning Service Needed?</label>
+                        <select id="cooklineService" name="cooklineService">
+                            <option value="">Select Option</option>
+                            <option value="yes-interested">Yes - Interested</option>
+                            <option value="no-not-interested">No - Not Interested</option>
+                            <option value="unsure">Unsure/Need More Info</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 7. Additional Notes & Observations -->
                 <div class="section notes-section">
                     <h2>Additional Notes & Observations</h2>
                     <div class="form-group">
@@ -709,6 +777,7 @@
                         equipment_condition: formData.get('equipmentCondition'),
                         cookline_service: formData.get('cooklineService'),
                         hood_fan_type: formData.get('hoodFanType'),
+                        hood_fan_mounting: formData.get('hoodFanMounting'),
                         hood_fan_condition: formData.get('hoodFanCondition'),
                         fan_concerns: formData.get('fanConcerns'),
                         hood_canopy_material: formData.get('hoodCanopyMaterial'),
