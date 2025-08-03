@@ -275,6 +275,8 @@
                                 <option value="casual-dining">Casual Dining</option>
                                 <option value="mom-pop">Mom & Pop Restaurant</option>
                                 <option value="fine-dining">Fine Dining</option>
+                                <option value="food-court">Food Court (Mall)</option>
+                                <option value="mall-restaurant">Mall Restaurant (Non-Food Court)</option>
                                 <option value="hotel">Hotel/Resort</option>
                                 <option value="hospital">Hospital/Medical</option>
                                 <option value="school">School/Educational</option>
@@ -349,21 +351,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Hood System Details -->
-                <div class="section">
-                    <h2>Hood System Details</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="hoodFans">Total Number of Hood Fans</label>
-                            <input type="number" id="hoodFans" name="hoodFans" min="0" max="50">
-                        </div>
-                        <div class="form-group">
-                            <label for="hoodFilters">Total Number of Hood Filters</label>
-                            <input type="number" id="hoodFilters" name="hoodFilters" min="0" max="100">
-                        </div>
-                    </div>
-                </div>
-
                 <!-- 5. Equipment & Cook-line Cleaning -->
                 <div class="section">
                     <h2>Equipment & Cook-line Cleaning</h2>
@@ -414,6 +401,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="equipmentCondition">Overall Cook-line Equipment Condition</label>
+                        <select id="equipmentCondition" name="equipmentCondition">
+                            <option value="">Select Condition</option>
+                            <option value="good-like-new">Good/Like New</option>
+                            <option value="average-normal">Average/Normal</option>
+                            <option value="heavy-concerning">Heavy Use/Concerning</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="cooklineService">Cook-line Cleaning Service Needed?</label>
                         <select id="cooklineService" name="cooklineService">
                             <option value="">Select Option</option>
@@ -424,7 +421,105 @@
                     </div>
                 </div>
 
-                <!-- 6. Building & Access Information -->
+                <!-- 6. Hood System Assessment -->
+                <div class="section">
+                    <h2>Hood System Assessment</h2>
+                    
+                    <!-- Hood Fan Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hoodFanType">Hood Fan Type</label>
+                            <select id="hoodFanType" name="hoodFanType">
+                                <option value="">Select Fan Type</option>
+                                <option value="upblast-mushroom">Upblast/Mushroom Fan</option>
+                                <option value="squirrel-cage">Squirrel Cage Fan</option>
+                                <option value="pizza-fan">Pizza Fan</option>
+                                <option value="mixed-types">Mixed Types</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hoodFanCondition">Hood Fan Condition</label>
+                            <select id="hoodFanCondition" name="hoodFanCondition">
+                                <option value="">Select Condition</option>
+                                <option value="new-light-use">New/Light Use</option>
+                                <option value="few-years-runs-fine">Few Years/Runs Fine</option>
+                                <option value="old-has-concerns">Old/Has Concerns</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="fanConcernsGroup" style="display: none;">
+                        <label for="fanConcerns">Fan Concerns (if applicable)</label>
+                        <select id="fanConcerns" name="fanConcerns">
+                            <option value="">No Concerns</option>
+                            <option value="noise-belt">Makes Noise - Belt Issue</option>
+                            <option value="noise-bearings-blade">Makes Noise - Bearings/Blade Shaft</option>
+                            <option value="noise-bearings-motor">Makes Noise - Bearings/Motor</option>
+                            <option value="other-concern">Other Concern</option>
+                        </select>
+                    </div>
+
+                    <!-- Hood System Materials -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hoodCanopyMaterial">Hood Canopy Material</label>
+                            <select id="hoodCanopyMaterial" name="hoodCanopyMaterial">
+                                <option value="">Select Material</option>
+                                <option value="stainless-steel">Stainless Steel</option>
+                                <option value="galvanized-steel">Galvanized Steel</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="magneticGroup" style="display: none;">
+                            <label for="stainlessMagnetic">Is Stainless Steel Magnetic?</label>
+                            <select id="stainlessMagnetic" name="stainlessMagnetic">
+                                <option value="">Select Option</option>
+                                <option value="yes">Yes - Magnetic</option>
+                                <option value="no">No - Non-Magnetic</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Hood Filter Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hoodFilterMaterial">Hood Filter Material</label>
+                            <select id="hoodFilterMaterial" name="hoodFilterMaterial">
+                                <option value="">Select Material</option>
+                                <option value="stainless-steel">Stainless Steel</option>
+                                <option value="galvanized-steel">Galvanized Steel</option>
+                                <option value="aluminum">Aluminum</option>
+                                <option value="mixed-materials">Mixed Materials</option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hoodFilterCondition">Hood Filter Condition</label>
+                            <select id="hoodFilterCondition" name="hoodFilterCondition">
+                                <option value="">Select Condition</option>
+                                <option value="good-condition">Good Condition</option>
+                                <option value="some-damaged">Some Damaged</option>
+                                <option value="many-damaged">Many Damaged</option>
+                                <option value="needs-replacement">Needs Replacement</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hoodFans">Total Number of Hood Fans</label>
+                            <input type="number" id="hoodFans" name="hoodFans" min="0" max="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="hoodFilters">Total Number of Hood Filters</label>
+                            <input type="number" id="hoodFilters" name="hoodFilters" min="0" max="100">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Building & Access Information -->
                 <div class="section">
                     <h2>Building & Access Information</h2>
                     <div class="form-row">
@@ -434,6 +529,7 @@
                                 <option value="">Select Building Type</option>
                                 <option value="standalone">Standalone Unit</option>
                                 <option value="shopping-center">Shopping Center/Strip Mall</option>
+                                <option value="mall">Mall/Shopping Mall</option>
                                 <option value="food-truck">Food Truck/Trailer</option>
                                 <option value="high-rise">High Rise Building</option>
                                 <option value="multi-story">Multi-Story Building</option>
@@ -512,7 +608,7 @@
                     </div>
                 </div>
 
-                <!-- 7. Additional Notes & Observations -->
+                <!-- 8. Additional Notes & Observations -->
                 <div class="section notes-section">
                     <h2>Additional Notes & Observations</h2>
                     <div class="form-group">
@@ -520,9 +616,15 @@
                         <textarea id="generalNotes" name="generalNotes" placeholder="Any additional observations, special requirements, potential challenges, or opportunities..."></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="assessorName">Assessor Name</label>
-                        <input type="text" id="assessorName" name="assessorName" placeholder="Name of person completing this assessment">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="assessorName">Assessor Name</label>
+                            <input type="text" id="assessorName" name="assessorName" placeholder="Name of person completing this assessment">
+                        </div>
+                        <div class="form-group">
+                            <label for="assessorId">Assessor ID *</label>
+                            <input type="text" id="assessorId" name="assessorId" placeholder="Employee ID or Code" required>
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -578,6 +680,10 @@
                         };
                     });
 
+                    // Handle service concerns checkboxes
+                    const serviceConcernCheckboxes = document.querySelectorAll('input[name="serviceConcerns"]:checked');
+                    const serviceConcernsList = Array.from(serviceConcernCheckboxes).map(cb => cb.value);
+
                     // Prepare data for Supabase
                     const assessmentData = {
                         restaurant_name: formData.get('restaurantName'),
@@ -597,19 +703,32 @@
                         last_service: formData.get('lastService') || null,
                         next_service: formData.get('nextService') || null,
                         current_provider: formData.get('currentProvider'),
+                        service_concerns: serviceConcernsList,
+                        service_concern_notes: formData.get('serviceConcernNotes'),
+                        equipment_list: equipmentList,
+                        equipment_condition: formData.get('equipmentCondition'),
+                        cookline_service: formData.get('cooklineService'),
+                        hood_fan_type: formData.get('hoodFanType'),
+                        hood_fan_condition: formData.get('hoodFanCondition'),
+                        fan_concerns: formData.get('fanConcerns'),
+                        hood_canopy_material: formData.get('hoodCanopyMaterial'),
+                        stainless_magnetic: formData.get('stainlessMagnetic'),
+                        hood_filter_material: formData.get('hoodFilterMaterial'),
+                        hood_filter_condition: formData.get('hoodFilterCondition'),
                         hood_fans: parseInt(formData.get('hoodFans')) || null,
                         hood_filters: parseInt(formData.get('hoodFilters')) || null,
-                        equipment_list: equipmentList,
-                        cookline_service: formData.get('cooklineService'),
                         building_type: formData.get('buildingType'),
                         stories: parseInt(formData.get('stories')) || null,
                         work_location: formData.get('workLocation'),
                         parking_details: formData.get('parkingDetails'),
-                        ladder_access: formData.get('ladderAccess'),
-                        ladder_location: formData.get('ladderLocation'),
-                        special_access: formData.get('specialAccess'),
+                        rooftop_access: formData.get('rooftopAccess'),
+                        access_status: formData.get('accessStatus'),
+                        access_location: formData.get('accessLocation'),
+                        security_requirement: formData.get('securityRequirement'),
+                        additional_access: formData.get('additionalAccess'),
                         general_notes: formData.get('generalNotes'),
                         assessor_name: formData.get('assessorName'),
+                        assessor_id: formData.get('assessorId'),
                         assessment_date: formData.get('assessmentDate') || null
                     };
 
@@ -684,9 +803,37 @@
                 }
             });
 
-            // Initialize the rooftop access fields as hidden
+            // Handle hood fan condition - show concerns if "old/has concerns"
+            document.getElementById('hoodFanCondition').addEventListener('change', function() {
+                const fanConcernsGroup = document.getElementById('fanConcernsGroup');
+                const fanConcerns = document.getElementById('fanConcerns');
+                
+                if (this.value === 'old-has-concerns') {
+                    fanConcernsGroup.style.display = 'block';
+                } else {
+                    fanConcernsGroup.style.display = 'none';
+                    fanConcerns.value = '';
+                }
+            });
+
+            // Handle hood canopy material - show magnetic question for stainless steel
+            document.getElementById('hoodCanopyMaterial').addEventListener('change', function() {
+                const magneticGroup = document.getElementById('magneticGroup');
+                const stainlessMagnetic = document.getElementById('stainlessMagnetic');
+                
+                if (this.value === 'stainless-steel') {
+                    magneticGroup.style.display = 'block';
+                } else {
+                    magneticGroup.style.display = 'none';
+                    stainlessMagnetic.value = '';
+                }
+            });
+
+            // Initialize the dynamic fields as hidden
             document.getElementById('accessStatusGroup').style.display = 'none';
             document.getElementById('accessLocationGroup').style.display = 'none';
+            document.getElementById('fanConcernsGroup').style.display = 'none';
+            document.getElementById('magneticGroup').style.display = 'none';
         });
     </script>
 </body>
