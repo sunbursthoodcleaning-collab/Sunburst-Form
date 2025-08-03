@@ -271,16 +271,17 @@
                             <label for="businessType">Business Type *</label>
                             <select id="businessType" name="businessType" required>
                                 <option value="">Select Business Type</option>
-                                <option value="mom-pop">Mom & Pop Restaurant</option>
                                 <option value="fast-food">Fast Food Chain</option>
                                 <option value="casual-dining">Casual Dining</option>
+                                <option value="mom-pop">Mom & Pop Restaurant</option>
                                 <option value="fine-dining">Fine Dining</option>
-                                <option value="food-truck">Food Truck/Trailer</option>
                                 <option value="hotel">Hotel/Resort</option>
                                 <option value="hospital">Hospital/Medical</option>
-                                <option value="church">Church/Religious</option>
                                 <option value="school">School/Educational</option>
-                                <option value="corporate">Corporate Cafeteria</option>
+                                <option value="church">Church/Religious</option>
+                                <option value="food-truck">Food Truck/Trailer</option>
+                                <option value="cafeteria">Cafeteria</option>
+                                <option value="buffet">Buffet</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -417,7 +418,7 @@
                         <select id="cooklineService" name="cooklineService">
                             <option value="">Select Option</option>
                             <option value="yes-interested">Yes - Interested</option>
-                            <option value="yes-current">Yes - Currently Getting</option>
+                            <option value="no-not-interested">No - Not Interested</option>
                             <option value="unsure">Unsure/Need More Info</option>
                         </select>
                     </div>
@@ -462,34 +463,50 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="ladderAccess">Fixed Ladder Available?</label>
-                            <select id="ladderAccess" name="ladderAccess">
-                                <option value="">Select Option</option>
-                                <option value="yes-accessible">Yes - Accessible</option>
-                                <option value="yes-locked">Yes - Locked/Restricted</option>
-                                <option value="no">No Fixed Ladder</option>
+                            <label for="rooftopAccess">Rooftop Access Type</label>
+                            <select id="rooftopAccess" name="rooftopAccess">
+                                <option value="">Select Access Type</option>
+                                <option value="fixed-ladder">Fixed Ladder</option>
+                                <option value="staircase">Staircase</option>
+                                <option value="elevator">Access Elevator</option>
+                                <option value="no-access">No Access Available</option>
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="ladderLocation">Fixed Ladder Location (if applicable)</label>
-                            <select id="ladderLocation" name="ladderLocation">
+                        <div class="form-group" id="accessStatusGroup">
+                            <label for="accessStatus">Access Status</label>
+                            <select id="accessStatus" name="accessStatus">
+                                <option value="">Select Status</option>
+                                <option value="accessible">Accessible</option>
+                                <option value="locked-restricted">Locked/Restricted</option>
+                                <option value="key-required">Key Required</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" id="accessLocationGroup">
+                            <label for="accessLocation">Access Location</label>
+                            <select id="accessLocation" name="accessLocation">
                                 <option value="">Select Location</option>
                                 <option value="inside">Inside Building</option>
                                 <option value="outside">Outside Building</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="securityRequirement">Security Requirements</label>
+                            <select id="securityRequirement" name="securityRequirement">
+                                <option value="">No Security Required</option>
+                                <option value="check-in">Check-in Required</option>
+                                <option value="security-clearance">Security Clearance Required</option>
+                                <option value="escort-required">Escort Required</option>
+                                <option value="badge-access">Badge/ID Access</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="specialAccess">Special Access Requirements</label>
-                            <select id="specialAccess" name="specialAccess">
-                                <option value="">No Special Access Required</option>
-                                <option value="key">Key Required</option>
-                                <option value="code">Access Code Required</option>
-                                <option value="security">Security Clearance Required</option>
-                                <option value="combination">Combination Lock</option>
-                            </select>
+                            <label for="additionalAccess">Additional Access Notes</label>
+                            <input type="text" id="additionalAccess" name="additionalAccess" placeholder="Any special codes, contact info, or access details">
                         </div>
                         <div class="form-group"></div>
                     </div>
@@ -646,6 +663,30 @@
                     schoolTypeField.value = '';
                 }
             });
+
+            // Handle rooftop access dynamic fields
+            document.getElementById('rooftopAccess').addEventListener('change', function() {
+                const accessStatusGroup = document.getElementById('accessStatusGroup');
+                const accessLocationGroup = document.getElementById('accessLocationGroup');
+                const accessStatus = document.getElementById('accessStatus');
+                const accessLocation = document.getElementById('accessLocation');
+                
+                if (this.value === 'no-access' || this.value === '') {
+                    // Hide additional fields if no access
+                    accessStatusGroup.style.display = 'none';
+                    accessLocationGroup.style.display = 'none';
+                    accessStatus.value = '';
+                    accessLocation.value = '';
+                } else {
+                    // Show additional fields for any access type
+                    accessStatusGroup.style.display = 'block';
+                    accessLocationGroup.style.display = 'block';
+                }
+            });
+
+            // Initialize the rooftop access fields as hidden
+            document.getElementById('accessStatusGroup').style.display = 'none';
+            document.getElementById('accessLocationGroup').style.display = 'none';
         });
     </script>
 </body>
