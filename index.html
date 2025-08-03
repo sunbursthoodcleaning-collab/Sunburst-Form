@@ -180,6 +180,10 @@
             border-left-color: #F7931E;
         }
 
+        .hidden {
+            display: none !important;
+        }
+
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -294,10 +298,10 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="schoolType">School Type (if applicable)</label>
+                        <div class="form-group hidden" id="schoolTypeGroup">
+                            <label for="schoolType">School Type</label>
                             <select id="schoolType" name="schoolType">
-                                <option value="">Not Applicable</option>
+                                <option value="">Select School Type</option>
                                 <option value="public-elementary">Public Elementary</option>
                                 <option value="public-middle">Public Middle School</option>
                                 <option value="public-high">Public High School</option>
@@ -422,7 +426,7 @@
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group hidden" id="fanMountingGroup">
                             <label for="hoodFanMounting">Hood Fan Mounted To</label>
                             <select id="hoodFanMounting" name="hoodFanMounting">
                                 <option value="">Select Mounting</option>
@@ -432,30 +436,6 @@
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="hoodFanCondition">Hood Fan Condition</label>
-                            <select id="hoodFanCondition" name="hoodFanCondition">
-                                <option value="">Select Condition</option>
-                                <option value="new-light-use">New/Light Use</option>
-                                <option value="few-years-runs-fine">Few Years/Runs Fine</option>
-                                <option value="old-has-concerns">Old/Has Concerns</option>
-                            </select>
-                        </div>
-                        <div class="form-group"></div>
-                    </div>
-
-                    <div class="form-group" id="fanConcernsGroup" style="display: none;">
-                        <label for="fanConcerns">Fan Concerns (if applicable)</label>
-                        <select id="fanConcerns" name="fanConcerns">
-                            <option value="">No Concerns</option>
-                            <option value="noise-belt">Makes Noise - Belt Issue</option>
-                            <option value="noise-bearings-blade">Makes Noise - Bearings/Blade Shaft</option>
-                            <option value="noise-bearings-motor">Makes Noise - Bearings/Motor</option>
-                            <option value="other-concern">Other Concern</option>
-                        </select>
                     </div>
 
                     <!-- Hood System Materials -->
@@ -469,7 +449,7 @@
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                        <div class="form-group" id="magneticGroup" style="display: none;">
+                        <div class="form-group hidden" id="magneticGroup">
                             <label for="stainlessMagnetic">Is Stainless Steel Magnetic?</label>
                             <select id="stainlessMagnetic" name="stainlessMagnetic">
                                 <option value="">Select Option</option>
@@ -493,16 +473,7 @@
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="hoodFilterCondition">Hood Filter Condition</label>
-                            <select id="hoodFilterCondition" name="hoodFilterCondition">
-                                <option value="">Select Condition</option>
-                                <option value="good-condition">Good Condition</option>
-                                <option value="some-damaged">Some Damaged</option>
-                                <option value="many-damaged">Many Damaged</option>
-                                <option value="needs-replacement">Needs Replacement</option>
-                            </select>
-                        </div>
+                        <div class="form-group"></div>
                     </div>
 
                     <div class="form-row">
@@ -534,8 +505,8 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="stories">Number of Stories (if multi-story)</label>
+                        <div class="form-group hidden" id="storiesGroup">
+                            <label for="stories">Number of Stories</label>
                             <input type="number" id="stories" name="stories" min="1" max="50">
                         </div>
                     </div>
@@ -567,7 +538,7 @@
                                 <option value="unknown">Unknown</option>
                             </select>
                         </div>
-                        <div class="form-group" id="accessStatusGroup">
+                        <div class="form-group hidden" id="accessStatusGroup">
                             <label for="accessStatus">Access Status</label>
                             <select id="accessStatus" name="accessStatus">
                                 <option value="">Select Status</option>
@@ -578,7 +549,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group" id="accessLocationGroup">
+                        <div class="form-group hidden" id="accessLocationGroup">
                             <label for="accessLocation">Access Location</label>
                             <select id="accessLocation" name="accessLocation">
                                 <option value="">Select Location</option>
@@ -609,62 +580,7 @@
                 <!-- 6. Equipment & Cook-line Cleaning -->
                 <div class="section">
                     <h2>Equipment & Cook-line Cleaning</h2>
-                    <div class="form-group">
-                        <label>Cooking Equipment Requiring Service:</label>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="stoves" name="equipment" value="stoves">
-                                <label for="stoves">Stoves/Ranges</label>
-                                <input type="number" id="stoves-qty" name="stoves-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="ovens" name="equipment" value="ovens">
-                                <label for="ovens">Ovens</label>
-                                <input type="number" id="ovens-qty" name="ovens-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="fryers" name="equipment" value="fryers">
-                                <label for="fryers">Deep Fryers</label>
-                                <input type="number" id="fryers-qty" name="fryers-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="grills" name="equipment" value="grills">
-                                <label for="grills">Grills</label>
-                                <input type="number" id="grills-qty" name="grills-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="flattop" name="equipment" value="flattop">
-                                <label for="flattop">Flat Top Grills</label>
-                                <input type="number" id="flattop-qty" name="flattop-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="salamander" name="equipment" value="salamander">
-                                <label for="salamander">Salamanders</label>
-                                <input type="number" id="salamander-qty" name="salamander-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="woks" name="equipment" value="woks">
-                                <label for="woks">Wok Stations</label>
-                                <input type="number" id="woks-qty" name="woks-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="other-equipment" name="equipment" value="other">
-                                <label for="other-equipment">Other Equipment</label>
-                                <input type="number" id="other-equipment-qty" name="other-equipment-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="equipmentCondition">Overall Cook-line Equipment Condition</label>
-                        <select id="equipmentCondition" name="equipmentCondition">
-                            <option value="">Select Condition</option>
-                            <option value="good-like-new">Good/Like New</option>
-                            <option value="average-normal">Average/Normal</option>
-                            <option value="heavy-concerning">Heavy Use/Concerning</option>
-                        </select>
-                    </div>
-
+                    
                     <div class="form-group">
                         <label for="cooklineService">Cook-line Cleaning Service Needed?</label>
                         <select id="cooklineService" name="cooklineService">
@@ -673,6 +589,64 @@
                             <option value="no-not-interested">No - Not Interested</option>
                             <option value="unsure">Unsure/Need More Info</option>
                         </select>
+                    </div>
+
+                    <div id="cooklineDetailsGroup" class="hidden">
+                        <div class="form-group">
+                            <label>Cooking Equipment Requiring Service:</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="stoves" name="equipment" value="stoves">
+                                    <label for="stoves">Stoves/Ranges</label>
+                                    <input type="number" id="stoves-qty" name="stoves-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="ovens" name="equipment" value="ovens">
+                                    <label for="ovens">Ovens</label>
+                                    <input type="number" id="ovens-qty" name="ovens-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="fryers" name="equipment" value="fryers">
+                                    <label for="fryers">Deep Fryers</label>
+                                    <input type="number" id="fryers-qty" name="fryers-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="grills" name="equipment" value="grills">
+                                    <label for="grills">Grills</label>
+                                    <input type="number" id="grills-qty" name="grills-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="flattop" name="equipment" value="flattop">
+                                    <label for="flattop">Flat Top Grills</label>
+                                    <input type="number" id="flattop-qty" name="flattop-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="salamander" name="equipment" value="salamander">
+                                    <label for="salamander">Salamanders</label>
+                                    <input type="number" id="salamander-qty" name="salamander-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="woks" name="equipment" value="woks">
+                                    <label for="woks">Wok Stations</label>
+                                    <input type="number" id="woks-qty" name="woks-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other-equipment" name="equipment" value="other">
+                                    <label for="other-equipment">Other Equipment</label>
+                                    <input type="number" id="other-equipment-qty" name="other-equipment-qty" min="0" max="50" placeholder="Qty" style="width: 60px; margin-left: 10px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="equipmentCondition">Overall Cook-line Equipment Condition</label>
+                            <select id="equipmentCondition" name="equipmentCondition">
+                                <option value="">Select Condition</option>
+                                <option value="good-like-new">Good/Like New</option>
+                                <option value="average-normal">Average/Normal</option>
+                                <option value="heavy-concerning">Heavy Use/Concerning</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -711,22 +685,92 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // Wait for Supabase to load
-        window.addEventListener('load', function() {
-            // Initialize Supabase
-            const SUPABASE_URL = 'https://addrzxptnszahokeqcof.supabase.co'
-            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkZHJ6eHB0bnN6YWhva2VxY29mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQyNDM5NDAsImV4cCI6MjA2OTgxOTk0MH0.1XfLwQ_O0iSrcQBPIiL4HPxrJ1ZIY-nglluViOFTIUM'
+        // 🥷 CODE ASSASSIN MODE - BULLETPROOF CONDITIONAL LOGIC 🥷
+        
+        function toggleElement(elementId, show, clearOnHide = true) {
+            const element = document.getElementById(elementId);
+            if (!element) {
+                console.error('Element not found:', elementId);
+                return;
+            }
             
-            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-            // Set today's date as default for assessment date
+            if (show) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+                if (clearOnHide) {
+                    const inputs = element.querySelectorAll('input, select, textarea');
+                    inputs.forEach(input => {
+                        if (input.type === 'checkbox') {
+                            input.checked = false;
+                        } else {
+                            input.value = '';
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🥷 Form loaded - setting up conditional logic');
+            
+            // Set today's date
             document.getElementById('assessmentDate').value = new Date().toISOString().split('T')[0];
-
-            // Form submission handler
+            
+            // 1. Business Type -> School Type
+            document.getElementById('businessType').addEventListener('change', function() {
+                console.log('Business type changed to:', this.value);
+                toggleElement('schoolTypeGroup', this.value === 'school');
+            });
+            
+            // 2. Building Type -> Stories
+            document.getElementById('buildingType').addEventListener('change', function() {
+                console.log('Building type changed to:', this.value);
+                const showStories = this.value === 'multi-story' || this.value === 'high-rise';
+                toggleElement('storiesGroup', showStories);
+                
+                // Set required attribute
+                const storiesInput = document.getElementById('stories');
+                if (showStories) {
+                    storiesInput.required = true;
+                } else {
+                    storiesInput.required = false;
+                }
+            });
+            
+            // 3. Hood Fan Type -> Mounting
+            document.getElementById('hoodFanType').addEventListener('change', function() {
+                console.log('Fan type changed to:', this.value);
+                toggleElement('fanMountingGroup', this.value === 'upblast-mushroom');
+            });
+            
+            // 4. Hood Canopy Material -> Magnetic Test
+            document.getElementById('hoodCanopyMaterial').addEventListener('change', function() {
+                console.log('Canopy material changed to:', this.value);
+                toggleElement('magneticGroup', this.value === 'stainless-steel');
+            });
+            
+            // 5. Rooftop Access -> Access Details
+            document.getElementById('rooftopAccess').addEventListener('change', function() {
+                console.log('Rooftop access changed to:', this.value);
+                const showDetails = this.value !== '' && this.value !== 'no-access';
+                toggleElement('accessStatusGroup', showDetails);
+                toggleElement('accessLocationGroup', showDetails);
+            });
+            
+            // 6. Cook-line Service -> Equipment Details
+            document.getElementById('cooklineService').addEventListener('change', function() {
+                console.log('Cookline service changed to:', this.value);
+                const showDetails = this.value === 'yes-interested' || this.value === 'unsure';
+                toggleElement('cooklineDetailsGroup', showDetails);
+            });
+            
+            // Form submission with Supabase
             document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                console.log('🥷 Form submission started');
                 
                 // Show loading state
                 const submitBtn = document.querySelector('.submit-btn');
@@ -735,7 +779,7 @@
                 submitBtn.disabled = true;
                 
                 try {
-                    // Collect form data
+                    // Simple fetch to Supabase (no external library needed)
                     const formData = new FormData(this);
                     
                     // Handle checkboxes for equipment
@@ -778,12 +822,9 @@
                         cookline_service: formData.get('cooklineService'),
                         hood_fan_type: formData.get('hoodFanType'),
                         hood_fan_mounting: formData.get('hoodFanMounting'),
-                        hood_fan_condition: formData.get('hoodFanCondition'),
-                        fan_concerns: formData.get('fanConcerns'),
                         hood_canopy_material: formData.get('hoodCanopyMaterial'),
                         stainless_magnetic: formData.get('stainlessMagnetic'),
                         hood_filter_material: formData.get('hoodFilterMaterial'),
-                        hood_filter_condition: formData.get('hoodFilterCondition'),
                         hood_fans: parseInt(formData.get('hoodFans')) || null,
                         hood_filters: parseInt(formData.get('hoodFilters')) || null,
                         building_type: formData.get('buildingType'),
@@ -801,13 +842,19 @@
                         assessment_date: formData.get('assessmentDate') || null
                     };
 
-                    // Submit to Supabase
-                    const { data, error } = await supabase
-                        .from('assessments')
-                        .insert([assessmentData]);
+                    // Direct REST API call to Supabase
+                    const response = await fetch('https://addrzxptnszahokeqcof.supabase.co/rest/v1/assessments', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkZHJ6eHB0bnN6YWhva2VxY29mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQyNDM5NDAsImV4cCI6MjA2OTgxOTk0MH0.1XfLwQ_O0iSrcQBPIiL4HPxrJ1ZIY-nglluViOFTIUM',
+                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkZHJ6eHB0bnN6YWhva2VxY29mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQyNDM5NDAsImV4cCI6MjA2OTgxOTk0MH0.1XfLwQ_O0iSrcQBPIiL4HPxrJ1ZIY-nglluViOFTIUM'
+                        },
+                        body: JSON.stringify(assessmentData)
+                    });
 
-                    if (error) {
-                        throw error;
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
                     // Success!
@@ -815,8 +862,13 @@
                     this.reset();
                     document.getElementById('assessmentDate').value = new Date().toISOString().split('T')[0];
                     
+                    // Hide all conditional sections after reset
+                    ['schoolTypeGroup', 'storiesGroup', 'fanMountingGroup', 'magneticGroup', 'accessStatusGroup', 'accessLocationGroup', 'cooklineDetailsGroup'].forEach(id => {
+                        toggleElement(id, false);
+                    });
+                    
                 } catch (error) {
-                    console.error('Error submitting assessment:', error);
+                    console.error('🚨 Submission error:', error);
                     alert('Error submitting assessment. Please try again.');
                 } finally {
                     // Reset button
@@ -824,85 +876,8 @@
                     submitBtn.disabled = false;
                 }
             });
-
-            // Dynamic form behavior
-            document.getElementById('buildingType').addEventListener('change', function() {
-                const storiesField = document.getElementById('stories');
-                const storiesGroup = storiesField.closest('.form-group');
-                
-                if (this.value === 'multi-story' || this.value === 'high-rise') {
-                    storiesGroup.style.display = 'block';
-                    storiesField.required = true;
-                } else {
-                    storiesGroup.style.display = 'none';
-                    storiesField.required = false;
-                    storiesField.value = '';
-                }
-            });
-
-            document.getElementById('businessType').addEventListener('change', function() {
-                const schoolTypeField = document.getElementById('schoolType');
-                const schoolTypeGroup = schoolTypeField.closest('.form-group');
-                
-                if (this.value === 'school') {
-                    schoolTypeGroup.style.display = 'block';
-                } else {
-                    schoolTypeGroup.style.display = 'none';
-                    schoolTypeField.value = '';
-                }
-            });
-
-            // Handle rooftop access dynamic fields
-            document.getElementById('rooftopAccess').addEventListener('change', function() {
-                const accessStatusGroup = document.getElementById('accessStatusGroup');
-                const accessLocationGroup = document.getElementById('accessLocationGroup');
-                const accessStatus = document.getElementById('accessStatus');
-                const accessLocation = document.getElementById('accessLocation');
-                
-                if (this.value === 'no-access' || this.value === '') {
-                    // Hide additional fields if no access
-                    accessStatusGroup.style.display = 'none';
-                    accessLocationGroup.style.display = 'none';
-                    accessStatus.value = '';
-                    accessLocation.value = '';
-                } else {
-                    // Show additional fields for any access type
-                    accessStatusGroup.style.display = 'block';
-                    accessLocationGroup.style.display = 'block';
-                }
-            });
-
-            // Handle hood fan condition - show concerns if "old/has concerns"
-            document.getElementById('hoodFanCondition').addEventListener('change', function() {
-                const fanConcernsGroup = document.getElementById('fanConcernsGroup');
-                const fanConcerns = document.getElementById('fanConcerns');
-                
-                if (this.value === 'old-has-concerns') {
-                    fanConcernsGroup.style.display = 'block';
-                } else {
-                    fanConcernsGroup.style.display = 'none';
-                    fanConcerns.value = '';
-                }
-            });
-
-            // Handle hood canopy material - show magnetic question for stainless steel
-            document.getElementById('hoodCanopyMaterial').addEventListener('change', function() {
-                const magneticGroup = document.getElementById('magneticGroup');
-                const stainlessMagnetic = document.getElementById('stainlessMagnetic');
-                
-                if (this.value === 'stainless-steel') {
-                    magneticGroup.style.display = 'block';
-                } else {
-                    magneticGroup.style.display = 'none';
-                    stainlessMagnetic.value = '';
-                }
-            });
-
-            // Initialize the dynamic fields as hidden
-            document.getElementById('accessStatusGroup').style.display = 'none';
-            document.getElementById('accessLocationGroup').style.display = 'none';
-            document.getElementById('fanConcernsGroup').style.display = 'none';
-            document.getElementById('magneticGroup').style.display = 'none';
+            
+            console.log('🥷 All event listeners attached successfully!');
         });
     </script>
 </body>
